@@ -65,7 +65,7 @@ public class ScoreController {
 		System.out.println("/score/remove : GET!");
 		
 		service.delete(stuNum);
-		return "redirect : /score/list";
+		return "redirect:/score/list";
 	}
 	
 	//5. 수정화면 열어주기	
@@ -90,24 +90,5 @@ public class ScoreController {
 		
 		return "redirect:/score/detail?stuNum="+stuNum;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

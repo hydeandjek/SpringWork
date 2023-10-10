@@ -3,31 +3,40 @@ package com.spring.basic.score.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.spring.basic.score.dto.ScoreListResponseDTO;
 import com.spring.basic.score.dto.ScoreRequestDTO;
 import com.spring.basic.score.entity.Score;
+import com.spring.basic.score.repository.IScoreMapper;
 import com.spring.basic.score.repository.IScoreRepository;
 
 import lombok.RequiredArgsConstructor;
 
 //컨트롤러와 레파지토리 사이에 배치되어 기타 비즈니스 로직 처리
-//ex)값을 가공, 예외처리 , dto로 변환, 트랜잭션등등....
+//ex) 값을 가공, 예외 처리, dto로 변환, 트랜잭션 등등...
 @Service //빈 등록
 @RequiredArgsConstructor
 public class ScoreService {
-	
-	private final IScoreRepository scoreRepository;
-	//등록의 중간처리
-	//컨트롤러는 나에게 DTO를 줬어.
-	//하지만, 온전한 학생의 정보를 가지는 객체는 -> Score(Entity)
-	//내가 Entity를 만들어서 넘겨야겠다.
-	public void insertScore(ScoreRequestDTO dto) {
-		Score score = new Score(dto);
-		//Entity 를 완성했으니, Repository에게 전달해서 DB에 넣자.
-		scoreRepository.save(score);
-	}
+
+    private final IScoreMapper scoreRepository;
+
+//    @Autowired
+//    public ScoreService(@Qualifier("spring") IScoreRepository scoreRepository) {
+//        this.scoreRepository = scoreRepository;
+//    }
+
+    //등록 중간처리
+    //컨트롤러는 나에게 DTO를 줬다.
+    //하지만, 온전한 학생의 정보를 가지는 객체는 -> Score(Entity)
+    //내가 Entity를 만들어서 넘겨야한다.
+    public void insertScore(ScoreRequestDTO dto) {
+        Score score =  new Score(dto);
+        //Entity를 완성했으니, Repository에게 전달해서 DB에 넣자.
+        scoreRepository.save(score);
+    }
 	
 	/*
 	 컨트롤러는 나에게 데이터베이스를 통해
@@ -44,7 +53,6 @@ public class ScoreService {
 			dtoList.add(dto);//변환된 DTO를 DTO List에 추가
 		}
 		return dtoList;
-		
 	}
 
 	
