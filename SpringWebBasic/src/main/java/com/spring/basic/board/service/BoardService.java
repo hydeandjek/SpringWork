@@ -3,6 +3,7 @@ package com.spring.basic.board.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.basic.board.dto.BoardListResponseDTO;
@@ -17,6 +18,11 @@ import lombok.RequiredArgsConstructor;
 public class BoardService {
 	
 	private final IBoardMapper mapper;
+	
+//	@Autowired
+//	public BoardService(IBoardMapper mapper) {
+//		this.mapper = mapper;
+//	}
 
 	public void insertArticle(String writer, String title, String content) {
 		Board board = new Board();
