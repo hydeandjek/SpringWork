@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.spring.myweb.freeboard.dto.page.Page;
+import com.spring.myweb.reply.dto.ReplyUpdateRequestDTO;
 import com.spring.myweb.reply.entity.Reply;
 
 public interface IReplyMapper {
@@ -27,6 +28,6 @@ public interface IReplyMapper {
 	int getTotal(int bno);//댓글 개수(페이징 , pageCreator 는 사용하지 않음)
 	
 	String pwCheck(int rno);//비밀번호 확인
-	void update(Reply reply);//댓글 수정
+	void update(ReplyUpdateRequestDTO dto);//댓글 수정
 	void delete(int rno);//댓글 삭제
 }
