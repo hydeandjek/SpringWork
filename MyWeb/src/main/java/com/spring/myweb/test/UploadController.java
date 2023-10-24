@@ -43,10 +43,10 @@ public class UploadController {
 		System.out.println("uuid :"+uuid.toString());
 		
 		String fileName= uuid.toString();
-		fileName= fileName.replace("-", "");
+		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf(".",fileRealName.length()));
+		fileName= fileName.replace("-", "")+file;
 		System.out.println("fileName : "+fileName);
 		
-		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf(".",fileRealName.length()));
 		
 		System.out.println("확장자명 :"+fileExtension);
 		
