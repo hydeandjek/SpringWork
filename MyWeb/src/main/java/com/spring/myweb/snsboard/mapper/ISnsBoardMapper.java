@@ -27,4 +27,7 @@ public interface ISnsBoardMapper {
 	
 	//좋아요삭제
 	void deleteLike(Map<String , String >params);
+	
+	//특정 회원의 조항요 글 벊 목록
+	List<Integer> likeList(String userId);
 }
